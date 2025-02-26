@@ -1,101 +1,84 @@
+"use client";
 import Image from "next/image";
+import { House, Books, Gear } from "@phosphor-icons/react";
+import Head from "next/head";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <div className="flex h-screen">
+        <div className="w-24 bg-[#324549] flex flex-col items-center justify-between py-4 space-y-4">
+          <button className="p-3 rounded-lg "><img src="favicon.ico" width={40} alt="Icon" /></button>
+          <div className="flex flex-col items-center justify-center py-4 space-y-4">
+            <button className="p-3 rounded-lg bg-[#1D282C]"><House size={ 32 } weight="fill" /></button>
+            <button className="p-3 rounded-lg hover:bg-[#1D282C]"><Books size={ 32 } /></button>
+          </div>
+          <button className="p-3 rounded-lg hover:bg-[#1D282C]"><Gear size={ 32 } /></button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="flex-1 p-10 py-5">
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex space-x-8">
+              <a className="text-white text-lg" href="#">
+                Library
+              </a>
+              <a className="text-gray-400 text-lg hover:text-gray-300" href="#">
+                Books
+              </a>
+              <a className="text-gray-400 text-lg hover:text-gray-300" href="#">
+                Categories
+              </a>
+            </div>
+            <div>
+              <input className="bg-gray-700 text-white rounded-full px-4 py-2" placeholder="Search here" type="text" />
+            </div>
+          </div>
+          <div className="bg-gray-700 rounded-lg h-48 mb-6">
+          </div>
+          <div>
+            <h2 className="text-2xl font-semibold mb-4">
+              Continue Reading
+            </h2>
+            <div className="flex space-x-4">
+              <div className="bg-gray-800 rounded-lg p-4">
+                <img alt="Book cover of 'From zero to Millionaire'" className="rounded-lg mb-2" height="150" src="https://storage.googleapis.com/a1aa/image/TBX2gPskPn5WNgkkSVYTunhUpKPqVMvvZqQ-wbNAvPY.jpg" width="100" />
+                <p className="text-white">
+                  From zero to Millionaire
+                </p>
+                <p className="text-gray-400">
+                  Ferry Unardi
+                </p>
+              </div>
+              <div className="bg-gray-800 rounded-lg p-4">
+                <img alt="Book cover of 'The Zurich Axioms'" className="rounded-lg mb-2" height="150" src="https://storage.googleapis.com/a1aa/image/vUCuq67Q3x0voyb4_jgAVwpEjKVfQ8dyTzW3sbwd9aA.jpg" width="100" />
+                <p className="text-white">
+                  The Zurich Axioms
+                </p>
+                <p className="text-gray-400">
+                  Max Gunther
+                </p>
+              </div>
+              <div className="bg-gray-800 rounded-lg p-4">
+                <img alt="Book cover of 'Market Wizards'" className="rounded-lg mb-2" height="150" src="https://storage.googleapis.com/a1aa/image/peS5orE3ouacTR1nEZBvzaqL7kQYs2WZJ8oN6FcR7Kg.jpg" width="100" />
+                <p className="text-white">
+                  Market Wizards
+                </p>
+                <p className="text-gray-400">
+                  Jack D. Schwager
+                </p>
+              </div>
+              <div className="bg-gray-800 rounded-lg p-4">
+                <img alt="Book cover of 'The Fund'" className="rounded-lg mb-2" height="150" src="https://storage.googleapis.com/a1aa/image/675rzFFKHVTvRKlgOfIW_YWnVPpW8mb3ta9meB2sdhI.jpg" width="100" />
+                <p className="text-white">
+                  The Fund
+                </p>
+                <p className="text-gray-400">
+                  Rob Copeland
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
