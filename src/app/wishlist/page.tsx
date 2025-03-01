@@ -1,9 +1,12 @@
-"use client";
-import Image from "next/image";
-import Head from "next/head";
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'Wishlist - Readify',
+  description: 'Wishlist Page',
+};
+
+export default function MyBooks() {
   return (
     <>
       <div className="flex h-screen">
@@ -12,17 +15,19 @@ export default function Home() {
             <img src="favicon.ico" width={40} alt="Icon" />
           </button>
           <div className="flex flex-col items-center justify-center py-4 space-y-4">
-            <button className="p-3 rounded-lg bg-[#1D282C] active:scale-90 transition-transform">
-              <span className="material-symbols-outlined filled text-[32px]">
-                home
-              </span>
-            </button>
-            <Link href="/mybooks">
+            <Link href="/">
               <button className="p-3 rounded-lg hover:bg-[#1D282C] active:scale-90 transition-transform">
                 <span className="material-symbols-outlined text-[32px]">
-                  auto_stories
+                  home
                 </span>
               </button>
+            </Link>
+            <Link href="/mybooks">
+            <button className="p-3 rounded-lg hover:bg-[#1D282C] active:scale-90 transition-transform">
+              <span className="material-symbols-outlined text-[32px]">
+                auto_stories
+              </span>
+            </button>
             </Link>
             <Link href="/history">
             <button className="p-3 rounded-lg hover:bg-[#1D282C] active:scale-90 transition-transform">
@@ -31,13 +36,11 @@ export default function Home() {
               </span>
             </button>
             </Link>
-            <Link href="/wishlist">
-            <button className="p-3 rounded-lg hover:bg-[#1D282C] active:scale-90 transition-transform">
-              <span className="material-symbols-outlined text-[32px]">
+            <button className="p-3 rounded-lg bg-[#1D282C] active:scale-90 transition-transform">
+              <span className="material-symbols-outlined filled text-[32px]">
                 favorite
               </span>
             </button>
-            </Link>
             <button className="p-3 rounded-lg hover:bg-[#1D282C] active:scale-90 transition-transform">
               <span className="material-symbols-outlined text-[32px]">
                 notifications
@@ -51,18 +54,8 @@ export default function Home() {
           </button>
         </div>
         <div className="flex-1 p-10 py-5">
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex space-x-8">
-              <a className="text-white text-lg" href="#">
-                Library
-              </a>
-              <a className="text-gray-400 text-lg hover:text-gray-300" href="#">
-                Books
-              </a>
-              <a className="text-gray-400 text-lg hover:text-gray-300" href="#">
-                Categories
-              </a>
-            </div>
+          <div className="flex justify-between items-center mb-6 mt-3">
+            <h2 className="text-3xl font-bold">My Books</h2>
             <div>
               <input
                 className="bg-gray-700 text-white rounded-full px-4 py-2"
@@ -71,9 +64,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="bg-gray-700 rounded-lg h-48 mb-6"></div>
           <div>
-            <h2 className="text-3xl font-bold mb-4">Continue Reading</h2>
             <div className="flex space-x-4">
               <button className="flex flex-col w-48 bg-[#324549] rounded-lg overflow-hidden shadow-lg max-w-xs">
                 <img
