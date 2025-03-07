@@ -1,9 +1,12 @@
-"use client";
-import Image from "next/image";
-import Head from "next/head";
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: 'Sign Up - Readify',
+  description: 'Sign Up Readify',
+};
+
+export default function SignUp() {
   return (
     <>
       <div className="flex w-full min-h-screen">
@@ -12,18 +15,29 @@ export default function Home() {
             <div className="flex items-center space-x-2">
               <img src="/readifybrand.svg" alt="My Icon" height="100" />
             </div>
-            <Link className="text-gray-400 p-2 px-3 rounded-md hover:text-white hover:bg-gray-600" href="/signup">
-              Sign up
-            </Link>
+            <a className="text-gray-400 p-2 px-3 rounded-md hover:text-white hover:bg-gray-600" href="/">
+              Log In
+            </a>
           </div>
           <div className="flex flex-col">
             <h2 className="text-3xl font-bold mb-2">
-              Sign In
+              Create an account
             </h2>
             <p className="text-gray-400 mb-8">
-              Sign In to an account
+                Sign up to create an account and explore many things
             </p>
-            <form action="/home/library" method="get"> 
+            <form>
+              <div className="mb-4">
+                <label className="block text-gray-400 mb-2">
+                  Name
+                </label>
+                <div className="flex items-center border border-gray-600 rounded-lg overflow-hidden px-3">
+                  <span className="material-symbols-outlined opacity-[0.75]">
+                    person
+                  </span>
+                  <input className="w-full px-3 py-2 bg-gray-800 text-white focus:outline-none" id="name" placeholder="Firstname & Lastname" type="text" />
+                </div>
+              </div>
               <div className="mb-4">
                 <label className="block text-gray-400 mb-2">
                   Email
@@ -47,7 +61,7 @@ export default function Home() {
                 </div>
               </div>
               <button className="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-lg" type="submit">
-                Sign in
+                Sign up
               </button>
             </form>
           </div>
