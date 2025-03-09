@@ -6,11 +6,16 @@ interface SidebarLinkProps {
   href: string;
   icon: string;
   children?: React.ReactNode;
+  activePatterns?: string[];
 }
 
-function SidebarLink({ href, icon, children }: SidebarLinkProps) {
+function SidebarLink({ href, icon, children, activePatterns = [] }: SidebarLinkProps) {
   const pathname = usePathname();
-  const isActive = pathname === href || pathname.startsWith(`${href}/`);
+  
+  // Fungsi untuk mengecek apakah path saat ini termasuk dalam pattern yang aktif
+  const isActive = activePatterns.length > 0
+    ? activePatterns.some(pattern => pathname.startsWith(pattern))
+    : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <Link href={href}>
@@ -38,7 +43,11 @@ export default function Sidebar() {
         </button>
       </Link>
       <div className="flex flex-col space-y-4">
-        <SidebarLink href="/home/library" icon="home" />
+        <SidebarLink 
+          href="/home/library" 
+          icon="home"
+          activePatterns={['/home/library', '/home/books', '/home/categories']}
+        />
         <SidebarLink href="/mybooks" icon="auto_stories" />
         <SidebarLink href="/history" icon="search_activity" />
         <SidebarLink href="/wishlist" icon="favorite" />
