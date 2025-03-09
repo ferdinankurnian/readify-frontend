@@ -13,12 +13,15 @@ export default function Wishlist() {
       <div className="flex-1 p-10 py-5">
         <div className="flex justify-between items-center mb-6 mt-3">
           <h2 className="text-3xl font-bold">Wishlist</h2>
-          <div>
-            <input
-              className="bg-gray-700 text-white rounded-full px-4 py-2"
-              placeholder="Search here"
-              type="text"
-            />
+          <div className="flex items-center bg-gray-700 rounded-full px-3 py-2 gap-2 w-64 hover:w-96 focus-within:w-96 [&:has(input:not(:placeholder-shown))]:w-96 transition-all duration-300">
+              <span className="material-symbols-outlined text-gray-400">
+                  search
+              </span>
+              <input
+                  className="bg-gray-700 text-white outline-none w-full"
+                  placeholder="Search books.."
+                  type="text"
+              />
           </div>
         </div>
         <div>

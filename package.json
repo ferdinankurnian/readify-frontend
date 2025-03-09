@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
+    "@radix-ui/react-tooltip": "^1.1.8",
     "next": "15.1.7",
     "phosphor-react": "^1.4.1",
     "react": "^19.0.0",
