@@ -83,7 +83,7 @@ export default function HomeLibrary() {
     return (
         <WithSidebarLayout>
             {/* Jangan ubah max width 100rem disini, ini buat max width kalau misal di zoom out page nya, itu tuh biar ga melebar, dikasih 100rem ini biar dibatesin widthnya dan di center gitu loh */}
-            <div className="w-full max-w-[100rem] flex flex-col gap-6 mx-auto p-10 py-5">
+            <div className="w-full max-w-[100rem] flex flex-col mx-auto p-10 py-5">
                 <div className="flex justify-between items-center mb-6">
                     <div className="flex space-x-8">
                         <a className="text-white text-lg" href="#">
@@ -113,11 +113,56 @@ export default function HomeLibrary() {
                         />
                     </div>
                 </div>
-                <div className="bg-gray-700 rounded-lg h-48 mb-6"></div>
-                <div className="max-w-full">
-                    <h1 className="text-3xl font-bold mb-4">Continue Reading</h1>
+                <div className="bg-gray-700 rounded-lg h-48 mb-10"></div>
+                <div className="flex flex-col gap-4 mb-10">
+                    <h1 className="text-3xl font-bold">Continue Reading</h1>
                     <div className="flex w-full justify-center">
                         <BookCarousel books={books} />
+                    </div>
+                </div>
+                <div className="flex flex-col w-full gap-4 mb-10">
+                    <h1 className="text-3xl font-bold">Categories</h1>
+                    <div className="grid grid-cols-4 grid-rows-2 gap-4">
+                        <div className="flex flex-col items-center justify-center px-20 py-10 bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors shadow-lg">
+                            <h1 className="text-white text-xl font-bold text-center">
+                                Fiksi
+                            </h1>
+                        </div>
+                        <div className="flex flex-col items-center justify-center px-20 py-10 bg-red-500 rounded-lg hover:bg-red-600 transition-colors shadow-lg">
+                            <h1 className="text-white text-xl font-bold text-center">
+                                Romansa
+                            </h1>
+                        </div>
+                        <div className="flex flex-col items-center justify-center px-20 py-10 bg-green-500 rounded-lg hover:bg-green-600 transition-colors shadow-lg">
+                            <h1 className="text-white text-xl font-bold text-center">
+                                Pendidikan
+                            </h1>
+                        </div>
+                        <div className="flex flex-col items-center justify-center px-20 py-10 bg-yellow-500 rounded-lg hover:bg-yellow-600 transition-colors shadow-lg">
+                            <h1 className="text-white text-xl font-bold text-center">
+                                Sejarah
+                            </h1>
+                        </div>
+                        <div className="flex flex-col items-center justify-center px-20 py-10 bg-pink-500 rounded-lg hover:bg-pink-600 transition-colors shadow-lg">
+                            <h1 className="text-white text-xl font-bold text-center">
+                                Anak-anak
+                            </h1>
+                        </div>
+                        <div className="flex flex-col items-center justify-center px-20 py-10 bg-indigo-500 rounded-lg hover:bg-indigo-600 transition-colors shadow-lg">
+                            <h1 className="text-white text-xl font-bold text-center">
+                                Sains
+                            </h1>
+                        </div>
+                        <div className="flex flex-col items-center justify-center px-20 py-10 bg-teal-500 rounded-lg hover:bg-teal-600 transition-colors shadow-lg">
+                            <h1 className="text-white text-xl font-bold text-center">
+                                Bisnis
+                            </h1>
+                        </div>
+                        <div className="flex flex-col items-center justify-center px-20 py-10 bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors shadow-lg">
+                            <h1 className="text-white text-xl font-bold text-center">
+                                Biografi
+                            </h1>
+                        </div>
                     </div>
                 </div>
             </div>

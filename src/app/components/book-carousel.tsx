@@ -64,7 +64,7 @@ const BookSlider: FC<BookSliderProps> = ({ books }) => {
           <SwiperSlide 
             key={`${book.title}-${index}`} 
             style={{ width: "200px" }}
-            className={`${index < books.length - 1 ? 'mr-[10px]' : ''}`}
+            className={`${index < books.length - 1 ? 'mr-[15px]' : ''}`}
           >
             <BookCard book={book} />
           </SwiperSlide>
