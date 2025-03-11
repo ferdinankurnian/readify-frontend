@@ -1,25 +1,104 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import WithSidebarLayout from '@/app/components/layouts/with-sidebar';
+import type { Metadata } from "next";
+import Link from "next/link";
+import WithSidebarLayout from "@/app/components/layouts/with-sidebar";
+import BookCarousel from "@/app/components/book-carousel";
 
 export const metadata: Metadata = {
-    title: 'Library - Readify',
-    description: 'Library Page',
+    title: "Library - Readify",
+    description: "Library Page",
 };
 
 export default function HomeLibrary() {
+    const books = [
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/T-sDq3H1iX0rU9SZhBQyMC9PCu3Zr52Fagk5rLcjtNc.jpg",
+            title: "From Zero to Millionaire",
+            author: "Ferry Unardi",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/vUCuq67Q3x0voyb4_jgAVwpEjKVfQ8dyTzW3sbwd9aA.jpg",
+            title: "The Zurich Axioms",
+            author: "Max Gunther",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/vUCuq67Q3x0voyb4_jgAVwpEjKVfQ8dyTzW3sbwd9aA.jpg",
+            title: "The Zurich Axioms",
+            author: "Max Gunther",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/T-sDq3H1iX0rU9SZhBQyMC9PCu3Zr52Fagk5rLcjtNc.jpg",
+            title: "From Zero to Millionaire",
+            author: "Ferry Unardi",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/vUCuq67Q3x0voyb4_jgAVwpEjKVfQ8dyTzW3sbwd9aA.jpg",
+            title: "The Zurich Axioms",
+            author: "Max Gunther",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/T-sDq3H1iX0rU9SZhBQyMC9PCu3Zr52Fagk5rLcjtNc.jpg",
+            title: "From Zero to Millionaire",
+            author: "Ferry Unardi",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/vUCuq67Q3x0voyb4_jgAVwpEjKVfQ8dyTzW3sbwd9aA.jpg",
+            title: "The Zurich Axioms",
+            author: "Max Gunther",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/T-sDq3H1iX0rU9SZhBQyMC9PCu3Zr52Fagk5rLcjtNc.jpg",
+            title: "From Zero to Millionaire",
+            author: "Ferry Unardi",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/vUCuq67Q3x0voyb4_jgAVwpEjKVfQ8dyTzW3sbwd9aA.jpg",
+            title: "The Zurich Axioms",
+            author: "Max Gunther",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/T-sDq3H1iX0rU9SZhBQyMC9PCu3Zr52Fagk5rLcjtNc.jpg",
+            title: "From Zero to Millionaire",
+            author: "Ferry Unardi",
+        },
+        {
+            imageUrl:
+                "https://storage.googleapis.com/a1aa/image/vUCuq67Q3x0voyb4_jgAVwpEjKVfQ8dyTzW3sbwd9aA.jpg",
+            title: "The Zurich Axioms",
+            author: "Max Gunther",
+        },
+
+        // ... tambahkan buku lainnya
+    ];
+
     return (
         <WithSidebarLayout>
-            <div className="p-10 py-5">
+            {/* Jangan ubah max width 100rem disini, ini buat max width kalau misal di zoom out page nya, itu tuh biar ga melebar, dikasih 100rem ini biar dibatesin widthnya dan di center gitu loh */}
+            <div className="w-full max-w-[100rem] flex flex-col gap-6 mx-auto p-10 py-5">
                 <div className="flex justify-between items-center mb-6">
                     <div className="flex space-x-8">
                         <a className="text-white text-lg" href="#">
                             Library
                         </a>
-                        <Link className="text-gray-400 text-lg hover:text-gray-300" href="books">
+                        <Link
+                            className="text-gray-400 text-lg hover:text-gray-300"
+                            href="books"
+                        >
                             Books
                         </Link>
-                        <Link className="text-gray-400 text-lg hover:text-gray-300" href="categories">
+                        <Link
+                            className="text-gray-400 text-lg hover:text-gray-300"
+                            href="categories"
+                        >
                             Categories
                         </Link>
                     </div>
@@ -35,35 +114,10 @@ export default function HomeLibrary() {
                     </div>
                 </div>
                 <div className="bg-gray-700 rounded-lg h-48 mb-6"></div>
-                <div>
-                    <h2 className="text-3xl font-bold mb-4">Continue Reading</h2>
-                    <div className="flex space-x-4">
-                        <button className="flex flex-col w-48 bg-[#324549] rounded-lg overflow-hidden shadow-lg max-w-xs">
-                            <img
-                                alt="Book cover of 'From Zero to Millionaire' by Nicolas Bérubé"
-                                className="w-[200px] h-[200px]"
-                                src="https://storage.googleapis.com/a1aa/image/T-sDq3H1iX0rU9SZhBQyMC9PCu3Zr52Fagk5rLcjtNc.jpg"
-                            />
-                            <div className="flex flex-col gap-1 p-3 pt-2 text-left">
-                                <h2 className="text-white text-md font-semibold">
-                                    From Zero to Millionaire
-                                </h2>
-                                <p className="text-sm text-gray-400">Ferry Unardi</p>
-                            </div>
-                        </button>
-                        <button className="flex flex-col w-48 bg-[#324549] rounded-lg overflow-hidden shadow-lg max-w-xs">
-                            <img
-                                alt="Book cover of 'From Zero to Millionaire' by Nicolas Bérubé"
-                                className="w-[200px] h-[200px]"
-                                src="https://storage.googleapis.com/a1aa/image/vUCuq67Q3x0voyb4_jgAVwpEjKVfQ8dyTzW3sbwd9aA.jpg"
-                            />
-                            <div className="flex flex-col gap-1 p-3 pt-2 text-left">
-                                <h2 className="text-white text-md font-semibold">
-                                    The Zurich Axioms
-                                </h2>
-                                <p className="text-sm text-gray-400">Max Gunther</p>
-                            </div>
-                        </button>
+                <div className="max-w-full">
+                    <h1 className="text-3xl font-bold mb-4">Continue Reading</h1>
+                    <div className="flex w-full justify-center">
+                        <BookCarousel books={books} />
                     </div>
                 </div>
             </div>

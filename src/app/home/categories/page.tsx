@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function HomeCategories() {
     return (
         <WithSidebarLayout>
-            <div className="p-10 py-5">
+            <div className="w-full max-w-[100rem] mx-auto p-10 py-5">
                 <div className="flex justify-between items-center mb-6">
                     <div className="flex space-x-8">
                         <Link className="text-gray-400 text-lg hover:text-gray-300" href="library">

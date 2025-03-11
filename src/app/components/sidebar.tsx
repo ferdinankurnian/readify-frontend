@@ -52,7 +52,7 @@ function SidebarLink({ href, icon, tooltip, activePatterns = [] }: SidebarLinkPr
 
 export default function Sidebar() {
   return (
-    <div className="w-24 bg-[#324549] flex flex-col items-center justify-between py-4">
+    <div className="w-24 bg-[#324549] flex flex-col items-center justify-between py-4 fixed top-0 left-0 h-screen">
       <Link href="/home/library">
         <button className="p-3 rounded-lg">
           <img src="/favicon.ico" width={40} alt="Icon" />
@@ -89,11 +89,15 @@ export default function Sidebar() {
       <Tooltip.Provider delayDuration={0}>
         <Tooltip.Root>
           <Tooltip.Trigger asChild>
-            <Link href="/user-settings">
-              <button className="p-3 rounded-lg hover:bg-[#1D282C] active:scale-90 transition-transform">
-                <span className="material-symbols-outlined text-[32px]">settings</span>
-              </button>
-            </Link>
+          <Link href="/user-settings">
+            <button className="p-3 rounded-lg hover:bg-[#1D282C] active:scale-90 transition-transform">
+              <img 
+                src="https://yt3.ggpht.com/ArqBq92wF9uqOL8N5r6sV8FBqECZL4ABMEKsl3MK47ReWK0Pt71QOooV55YN3zrrRdZkoqRmww=s88-c-k-c0x00ffffff-no-rj" 
+                alt="User Avatar"
+                className="w-8 h-8 rounded-full object-cover"
+              />
+            </button>
+          </Link>
           </Tooltip.Trigger>
           <Tooltip.Portal>
             <Tooltip.Content

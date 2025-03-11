@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function History() {
   return (
     <WithSidebarLayout>
-      <div className="flex-1 p-10 py-5">
+      <div className="w-full max-w-[100rem] mx-auto p-10 py-5">
         <div className="flex justify-between items-center mb-6 mt-3">
           <h2 className="text-3xl font-bold">History</h2>
             <div className="flex items-center bg-gray-700 rounded-full px-3 py-2 gap-2 w-64 hover:w-96 focus-within:w-96 [&:has(input:not(:placeholder-shown))]:w-96 transition-all duration-300">
