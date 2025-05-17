@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import WithSidebarLayout from '@/app/components/layouts/with-sidebar';
+import type { Metadata } from "next";
+import Link from "next/link";
+import WithSidebarLayout from "@/components/layouts/with-sidebar";
 
 export const metadata: Metadata = {
-  title: 'My Books - Readify',
-  description: 'My Books Page',
+  title: "My Books - Readify",
+  description: "My Books Page",
 };
 
 export default function MyBooks() {
@@ -14,14 +14,14 @@ export default function MyBooks() {
         <div className="flex justify-between items-center mb-6 mt-3">
           <h2 className="text-3xl font-bold">My Books</h2>
           <div className="flex items-center bg-gray-700 rounded-full px-3 py-2 gap-2 w-64 hover:w-96 focus-within:w-96 [&:has(input:not(:placeholder-shown))]:w-96 transition-all duration-300">
-              <span className="material-symbols-outlined text-gray-400">
-                  search
-              </span>
-              <input
-                  className="bg-gray-700 text-white outline-none w-full"
-                  placeholder="Search books.."
-                  type="text"
-              />
+            <span className="material-symbols-outlined text-gray-400">
+              search
+            </span>
+            <input
+              className="bg-gray-700 text-white outline-none w-full"
+              placeholder="Search books.."
+              type="text"
+            />
           </div>
         </div>
         <div>
@@ -47,7 +47,7 @@ export default function MyBooks() {
               />
               <div className="flex flex-col gap-1 p-3 pt-2 text-left">
                 <h2 className="text-white text-md font-semibold">
-                The Zurich Axioms
+                  The Zurich Axioms
                 </h2>
                 <p className="text-sm text-gray-400">Max Gunther</p>
               </div>

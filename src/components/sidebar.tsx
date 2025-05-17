@@ -36,7 +36,7 @@ function SidebarLink({ href, icon, tooltip, activePatterns = [] }: SidebarLinkPr
         </Tooltip.Trigger>
         <Tooltip.Portal>
           <Tooltip.Content
-            className="bg-[#1D282C] px-3 py-1.5 rounded-md text-sm text-white shadow-lg"
+            className="bg-[#1D282C] px-3 py-1.5 rounded-md text-sm text-white shadow-lg z-10"
             side="right"
             sideOffset={5}
             align="center"
@@ -52,7 +52,7 @@ function SidebarLink({ href, icon, tooltip, activePatterns = [] }: SidebarLinkPr
 
 export default function Sidebar() {
   return (
-    <div className="w-24 bg-[#324549] flex flex-col items-center justify-between py-4 fixed top-0 left-0 h-screen">
+    <div className="w-24 bg-[#324549] flex flex-col items-center justify-between py-4 fixed top-0 left-0 h-screen z-10">
       <Link href="/home/library">
         <button className="p-3 rounded-lg">
           <img src="/favicon.ico" width={40} alt="Icon" />
@@ -101,7 +101,7 @@ export default function Sidebar() {
           </Tooltip.Trigger>
           <Tooltip.Portal>
             <Tooltip.Content
-              className="bg-[#1D282C] px-3 py-1.5 rounded-md text-sm text-white shadow-lg"
+              className="bg-[#1D282C] px-3 py-1.5 rounded-md text-sm text-white shadow-lg z-10"
               side="right"
               sideOffset={5}
               align="center"
