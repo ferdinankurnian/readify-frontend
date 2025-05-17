@@ -30,7 +30,7 @@ import {SidebarLinks} from "@/constants/sidebar-links"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [activeItem, setActiveItem] = React.useState(SidebarLinks.navMain[0]);
-  const { setOpen, isCollapsed } = useSidebar(); // Ambil isCollapsed dari useSidebar
+  const { setOpen } = useSidebar(); // Removed isCollapsed as it does not exist in SidebarContextProps
 
   return (
     // Kita pake satu Sidebar aja

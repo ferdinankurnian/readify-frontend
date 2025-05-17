@@ -61,7 +61,11 @@ export default function SignIn() {
       if (err.response?.data?.errors) {
         // errors format: { field1: ["msg1", "msg2"], field2: [...] }
         Object.entries(err.response.data.errors).forEach(([field, msgs]) => {
-          console.error(`${field}: ${msgs.join(", ")}`);
+          if (Array.isArray(msgs)) {
+            console.error(`${field}: ${msgs.join(", ")}`);
+          } else {
+            console.error(`${field}: ${String(msgs)}`);
+          }
         });
         setError(Object.values(err.response.data.errors).flat().join(" "));
       } else if (err.response?.data?.message) {
