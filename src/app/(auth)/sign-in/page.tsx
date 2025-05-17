@@ -15,12 +15,14 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
+    setSuccess('');
 
     try {
       // Tentukan URL endpoint API Laravel Anda
@@ -35,8 +37,6 @@ export default function SignIn() {
         withCredentials: false,
       });
 
-      console.log("Testing")
-
       // Jika login berhasil, simpan token
       if (response.data.status && response.data.data.token) {
         localStorage.setItem('auth_token', response.data.access_token);
@@ -48,6 +48,8 @@ export default function SignIn() {
         if (response.data.user) {
           localStorage.setItem('user', JSON.stringify(response.data.user));
         }
+
+        setSuccess('Login successful! Redirecting to dashboard...');
         
         // Redirect ke halaman dashboard
         router.push('/');
@@ -71,8 +73,8 @@ export default function SignIn() {
             <div className="flex items-center space-x-2">
               <Image src="/readifybrand.svg" alt="My Icon" width={100} height={100} />
             </div>
-            <Link className="text-gray-400 p-2 px-3 rounded-md hover:text-white hover:bg-gray-600" href="/">
-              Sign In
+            <Link className="text-gray-400 p-2 px-3 rounded-md hover:text-white hover:bg-gray-600" href="/sign-up">
+              Sign Up
             </Link>
           </div>
           <div className="flex flex-col">
@@ -83,9 +85,13 @@ export default function SignIn() {
               Sign in to explore many things.
             </p>
             
-            {error && (
-              <div className="mb-4 p-3 bg-red-500 bg-opacity-20 border border-red-500 text-white rounded-lg">
-                {error}
+            {(success || error) && (
+              <div
+              className={`mb-4 p-3 rounded-lg border text-white ${
+                success ? 'bg-blue-600 bg-opacity-20 border-blue-500' : 'bg-red-500 bg-opacity-20 border-red-500'
+              }`}
+              >
+              {success || error}
               </div>
             )}
             

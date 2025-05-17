@@ -1,14 +1,79 @@
+"use client"
+
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from "next/image";
-import { Mail, KeyRound } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: 'Sign Up - Readify',
-  description: 'Sign Up Readify',
-};
+import { Mail, KeyRound, User } from "lucide-react";
+import { useState } from 'react';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 export default function SignIn() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordconfirmation, setPasswordConfirmation] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+    setSuccess('');
+
+    try {
+      // Tentukan URL endpoint API Laravel Anda
+      const response = await axios.post('http://localhost:8000/api/register', {
+        name,
+        email,
+        password,
+        password_confirmation: passwordconfirmation
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        withCredentials: false,
+      });
+
+      // Jika register berhasil, simpan token
+      if (response.data.status && response.data.data.token) {
+        localStorage.setItem('auth_token', response.data.access_token);
+
+        console.log("Response data:", response.data);
+        
+        
+        // Simpan data user jika ada
+        if (response.data.user) {
+          localStorage.setItem('user', JSON.stringify(response.data.user));
+        }
+
+        setSuccess('Login successful! Redirecting to login...');
+        
+        // Redirect ke halaman dashboard
+        router.push('/sign-in');
+      }
+    } catch (err: any) {
+      console.log("🛑 Error response:", err.response);
+      if (err.response?.data?.errors) {
+        // errors format: { field1: ["msg1", "msg2"], field2: [...] }
+        Object.entries(err.response.data.errors).forEach(([field, msgs]) => {
+          console.error(`${field}: ${msgs.join(", ")}`);
+        });
+        setError(Object.values(err.response.data.errors).flat().join(" "));
+      } else if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError('Something went wrong.');
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="flex w-full min-h-screen">
@@ -28,16 +93,24 @@ export default function SignIn() {
             <p className="text-gray-400 mb-8">
                 Create an account to explore many things.
             </p>
-            <form>
+            {(success || error) && (
+              <div
+              className={`mb-4 p-3 rounded-lg border text-white ${
+                success ? 'bg-blue-600 bg-opacity-20 border-blue-500' : 'bg-red-500 bg-opacity-20 border-red-500'
+              }`}
+              >
+              {success || error}
+              </div>
+            )}
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block text-gray-400 mb-2">
-                  Username
+                  Name
                 </label>
                 <div className="flex items-center border border-gray-600 rounded-lg overflow-hidden px-3">
-                  <span className="material-symbols-outlined opacity-[0.75]">
-                    mail
-                  </span>
-                  <input className="w-full px-3 py-2 bg-gray-800 text-white focus:outline-none" id="email" placeholder="name@example.com" type="email" />
+                  <User />
+                  <input className="w-full px-3 py-2 text-white focus:outline-none" id="name" placeholder="Your Name" type="text" value={name}
+  onChange={e => setName(e.target.value)} />
                 </div>
               </div>
               <div className="mb-4">
@@ -45,10 +118,9 @@ export default function SignIn() {
                   Email
                 </label>
                 <div className="flex items-center border border-gray-600 rounded-lg overflow-hidden px-3">
-                  <span className="material-symbols-outlined opacity-[0.75]">
-                    mail
-                  </span>
-                  <input className="w-full px-3 py-2 bg-gray-800 text-white focus:outline-none" id="email" placeholder="name@example.com" type="email" />
+                <Mail />
+                  <input className="w-full px-3 py-2 text-white focus:outline-none" id="email" placeholder="name@example.com" type="email" value={email}
+  onChange={e => setEmail(e.target.value)} />
                 </div>
               </div>
               <div className="mb-6">
@@ -56,10 +128,19 @@ export default function SignIn() {
                   Password
                 </label>
                 <div className="flex items-center border border-gray-600 rounded-lg overflow-hidden px-3">
-                  <span className="material-symbols-outlined opacity-[0.75]">
-                    lock
-                  </span>
-                  <input className="w-full px-3 py-2 bg-gray-800 text-white focus:outline-none" id="password" placeholder="••••••••" type="password" />
+                  <KeyRound />
+                  <input className="w-full px-3 py-2 text-white focus:outline-none" id="password" placeholder="••••••••" type="password" value={password}
+  onChange={e => setPassword(e.target.value)} />
+                </div>
+              </div>
+              <div className="mb-6">
+                <label className="block text-gray-400 mb-2">
+                  Confirm Password
+                </label>
+                <div className="flex items-center border border-gray-600 rounded-lg overflow-hidden px-3">
+                  <KeyRound />
+                  <input className="w-full px-3 py-2 text-white focus:outline-none" id="passwordconfirmation" placeholder="••••••••" type="password" value={passwordconfirmation}
+  onChange={e => setPasswordConfirmation(e.target.value)} />
                 </div>
               </div>
               <button className="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-lg" type="submit">
