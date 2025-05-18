@@ -1,16 +1,16 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<img src="./public/readifybrand.svg" width="200"/>
+
+[![Deploy to Vercel](https://vercel.com/button)]([https://nama-project-git-feat-login-nama.vercel.app](https://readify-frontend-git-refresh-ferdinan-kurnias-projects.vercel.app))
+
+Readify is a web Library built with shadcn, next.js and bun
+
+
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
 bun dev
 ```
 
