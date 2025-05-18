@@ -141,7 +141,13 @@ export default function SignIn() {
           </div>
         </div>
         <div className="hidden md:block md:w-1/2 bg-gray-600 rounded-l-[50px]">
-          <img alt="A stack of books with an open book on top in a library setting" className="w-full h-full object-cover rounded-l-[50px]" height="800" src="https://storage.googleapis.com/a1aa/image/a39XT4Ih73lIZV3lqGYOU7y0o20KgEqZNNe3_vos2SA.jpg" width="600" />
+          <Image 
+            alt="A stack of books with an open book on top in a library setting" 
+            className="w-full h-full object-cover rounded-l-[50px]" 
+            src="https://storage.googleapis.com/a1aa/image/a39XT4Ih73lIZV3lqGYOU7y0o20KgEqZNNe3_vos2SA.jpg" 
+            width={600} 
+            height={800} 
+          />
         </div>
       </div>
     </>
