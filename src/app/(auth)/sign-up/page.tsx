@@ -6,6 +6,7 @@ import { Mail, KeyRound, User } from "lucide-react";
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
 
 export default function SignIn() {
   const [name, setName] = useState('');
@@ -150,13 +151,13 @@ export default function SignIn() {
   onChange={e => setPasswordConfirmation(e.target.value)} />
                 </div>
               </div>
-              <button
-                className="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-lg"
+              <Button 
                 type="submit"
+                size="full"
                 disabled={isLoading}
-              >
-                {isLoading ? 'Signing up...' : 'Sign up'}
-              </button>
+                >
+                  {isLoading ? 'Signing up...' : 'Sign up'}
+              </Button>
             </form>
           </div>
         </div>

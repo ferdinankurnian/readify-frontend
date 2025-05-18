@@ -8,6 +8,7 @@ import { Mail, KeyRound } from "lucide-react";
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -129,13 +130,13 @@ export default function SignIn() {
                   />
                 </div>
               </div>
-              <button 
-                className={`w-full ${isLoading ? 'bg-gray-500' : 'bg-neutral-400 hover:bg-gray-600'} text-white py-2 rounded-lg flex justify-center`} 
-                type="submit"
-                disabled={isLoading}
+              <Button 
+              type="submit"
+              size="full"
+              disabled={isLoading}
               >
-                {isLoading ? 'Signing in...' : 'Sign in'}
-              </button>
+              {isLoading ? 'Signing in...' : 'Sign in'}
+              </Button>
             </form>
           </div>
         </div>
