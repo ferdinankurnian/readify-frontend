@@ -1,6 +1,5 @@
 "use client"
 
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from "next/image";
 import { Mail, KeyRound, User } from "lucide-react";
@@ -56,9 +55,13 @@ export default function SignIn() {
         // Redirect ke halaman dashboard
         router.push('/sign-in');
       }
-    } catch (err: any) {
-      console.log("🛑 Error response:", err.response);
-      if (err.response?.data?.errors) {
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        console.log("🛑 Error response:", err.response);
+      } else {
+        console.log("🛑 Unknown error:", err);
+      }
+      if (axios.isAxiosError(err) && err.response?.data?.errors) {
         // errors format: { field1: ["msg1", "msg2"], field2: [...] }
         Object.entries(err.response.data.errors).forEach(([field, msgs]) => {
           if (Array.isArray(msgs)) {
@@ -68,7 +71,7 @@ export default function SignIn() {
           }
         });
         setError(Object.values(err.response.data.errors).flat().join(" "));
-      } else if (err.response?.data?.message) {
+      } else if (axios.isAxiosError(err) && err.response?.data?.message) {
         setError(err.response.data.message);
       } else {
         setError('Something went wrong.');
@@ -147,8 +150,12 @@ export default function SignIn() {
   onChange={e => setPasswordConfirmation(e.target.value)} />
                 </div>
               </div>
-              <button className="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-lg" type="submit">
-                Sign up
+              <button
+                className="w-full bg-gray-700 hover:bg-gray-600 text-white py-2 rounded-lg"
+                type="submit"
+                disabled={isLoading}
+              >
+                {isLoading ? 'Signing up...' : 'Sign up'}
               </button>
             </form>
           </div>

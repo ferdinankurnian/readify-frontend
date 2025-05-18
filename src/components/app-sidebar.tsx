@@ -1,15 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  BellIcon,
-  BooksIcon,
-  ClockCounterClockwiseIcon,
-  HeartStraightIcon,
-  HouseIcon,
-} from "@phosphor-icons/react";
 import { NavUser } from "@/components/nav-user";
-import { Label } from "@/components/ui/label";
 import {
   Sidebar,
   SidebarContent,
