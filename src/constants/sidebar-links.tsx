@@ -14,14 +14,14 @@ export const SidebarLinks = {
   },
   navMain: [
     {
-      title: "Drafts",
+      title: "Home",
       url: "#",
       icon: HouseIcon,
       isActive: false,
       cantFill: false,
     },
     {
-      title: "Library",
+      title: "My Books",
       url: "#",
       icon: BooksIcon,
       isActive: false,
